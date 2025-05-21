@@ -36,7 +36,7 @@ def post_request_verify_otp():
                     logging.info("............ Get Code post request is Done ...........")
                 else:
                     logging.error("'Success = true' not found in response body")
-                    logging.error("............. Error Get Code post request ............")
+                    logging.error("............. Error Get Code post request .............")
             
             else:
                 logging.info("Response has no content..")
