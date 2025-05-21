@@ -11,12 +11,13 @@ def post_request_logout():
         response = requests.post(url, headers=headers)
         print("Status Code :", response.status_code)
         
-        assert response.status_code == 201, f"Unexpected status code: {response.status_code}"
+        assert response.status_code == 200, f"Unexpected status code: {response.status_code}"
         print("Logout POST request was successful.")
             
         if response.content:
             json_data = response.json()
-            print("Json Post Response body : ", json_data)
+            json_str = json.dumps(json_data, indent=4)
+            print("json get response body : ", json_str)
         
             # Basic check validation (optional) 
             '''assert "userid" in json_data, "'userid' key not found in response"

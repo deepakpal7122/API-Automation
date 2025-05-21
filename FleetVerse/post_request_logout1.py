@@ -11,12 +11,13 @@ def post_request_logout():
         response = requests.post(url, headers=headers)
         print("Status Code :", response.status_code)
         
-        if response.status_code == 201:
+        if response.status_code == 200:
             print("Logout POST request was successful.")
             
             if response.content:    
                 json_data = response.json()
-                print("Json Post Response body : ", json_data)
+                json_str = json.dumps(json_data, indent=4)
+                print("json get response body : ", json_str)
             
                 # Basic check (optional)
                 '''if "userid" in json_data:

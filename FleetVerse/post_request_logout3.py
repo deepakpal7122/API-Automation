@@ -1,5 +1,6 @@
 import requests
 import logging
+import json
 
 logging.basicConfig(level=logging.INFO,format="%(asctime)s [%(levelname)s] - %(message)s")
 
@@ -19,7 +20,8 @@ def post_request_logout():
             
         if response.content:
             json_data = response.json()
-            logging.info(f"Post Response JSON : {json_data}")
+            json_str = json.dumps(json_data, indent=4)
+            logging.info(f"json response body : {json_str}")
         
             # Basic check (optional)
             '''assert "userid" in json_data, "'userid' key not found in response"

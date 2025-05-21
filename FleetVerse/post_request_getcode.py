@@ -1,11 +1,12 @@
 import requests
 import logging
+import json
 
 logging.basicConfig(level=logging.INFO,format="%(asctime)s [%(levelname)s] - %(message)s")
 
 def post_request_getcode():
     url = "https://digital-osp-cv-dev-ms.api.tatamotors/api/v2/cv_online/send_otp/"
-    auth_token = "meHNJ9qcrzkfBKzrhyIeZ3mBxzuctO"
+    auth_token = "mvEh3eq3MTDYiY4l54tp5ZnwJviM5x"
     
     headers = {"Authorization" : f"Bearer {auth_token}",
               "Content-Type" : "application/json"}
@@ -22,7 +23,8 @@ def post_request_getcode():
         
         if response.content:
             json_data = response.json()
-            logging.info(f"Response JSON : {json_data}")
+            json_str = json.dumps(json_data, indent=4)
+            logging.info(f"json response body : {json_str}")
             
             msg = json_data["data"]["msg"]
             assert "Code sent" in msg, f"Code Sent message not found in response"

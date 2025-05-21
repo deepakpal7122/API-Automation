@@ -1,5 +1,6 @@
 import requests
 import logging
+import json
 
 logging.basicConfig(level=logging.INFO,format="%(asctime)s [%(levelname)s] - %(message)s")
 
@@ -24,7 +25,8 @@ def post_request_verify_otp():
             
             if response.content:
                 json_data = response.json()
-                logging.info(f"Json response body : {json_data}")
+                json_str = json.dumps(json_data, indent=4)
+                print("json get response body : ", json_str)
 
                 success_mesg = json_data.get("success", True)
                 msg = json_data["success"]
@@ -34,7 +36,7 @@ def post_request_verify_otp():
                     logging.info("............ Get Code post request is Done ...........")
                 else:
                     logging.error("'Success = true' not found in response body")
-                    logging.error("............. Get Code post request is Error............")
+                    logging.error("............. Error Get Code post request ............")
             
             else:
                 logging.info("Response has no content.")
