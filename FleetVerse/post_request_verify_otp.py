@@ -39,7 +39,7 @@ def post_request_verify_otp():
                     logging.error("............. Error Get Code post request ............")
             
             else:
-                logging.info("Response has no content.")
+                logging.info("Response has no content..")
                 
         else:
             logging.error(f"Unexpected status code: {response.status_code}")
